@@ -323,9 +323,10 @@
   .quiz-opt.wrong{ border-color: var(--rust); background: color-mix(in srgb, var(--rust) 12%, var(--paper)); }
   .quiz-fb{ margin: 8px 0 0; font-size: 14px; line-height: 1.6; color: var(--ink-dim); }
   .quiz-score{ display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-top: 4px; font-size: 15px; font-weight: 700; }
+  .lede-quote{ margin: 14px 0 0; padding: 4px 0 4px 16px; border-left: 3px solid var(--caramel); font-size: 17px; line-height: 1.7; color: var(--ink); max-width: 62ch; }
+  .lede-credit{ margin: 10px 0 0 19px; font-size: 13px; color: var(--ink-dim); }
   .site-foot{ margin-top: 40px; padding-top: 18px; border-top: 2px solid var(--line); font-size: 14px; line-height: 1.7; color: var(--ink-dim); max-width: 72ch; }
   .site-foot h2{ font-size: 15.5px; margin: 0 0 6px; color: var(--ink); }
-.site-foot .site-author{ font-size: 15px; color: var(--ink); margin-bottom: 10px; }
   .site-foot p{ margin: 0 0 8px; }
   .site-foot strong{ color: var(--ink); }
   .extra-divider{ margin-top: 34px; padding-top: 14px; border-top: 2px solid var(--line); }
@@ -911,7 +912,8 @@
   <header class="top">
     <p class="eyebrow">Coffee Extraction 101 · Pour-Over Lab</p>
     <h1>ห้องเรียนการสกัดกาแฟ</h1>
-    <p class="lede">ทำไมน้ำถึงดึงรสชาติออกจากกาแฟไม่พร้อมกัน รู้จักตัวแปรและศัพท์ที่ต้องใช้ แล้วค่อยไปทดลองปรับสูตรจริงในห้องแล็บ</p>
+    <blockquote class="lede lede-quote">ความสนุกของการชงกาแฟคือ ‘เมล็ดเดียวกัน ชงแต่ละรอบก็ไม่เหมือนกัน’ แต่ความท้าทายที่แท้จริงคือ เราจะเข้าใจตัวแปรอย่างไร ให้สามารถทำซ้ำรสชาติที่ดีที่สุดแก้วนั้นได้อีกครั้ง</blockquote>
+    <p class="lede-credit">จัดทำโดย ศูนย์วิจัยพัฒนากาแฟคุณภาพ (Coffee Quality Research Center) มหาวิทยาลัยแม่ฟ้าหลวง</p>
     <div class="tabs" role="tablist">
       <button class="tab-btn" data-tab="basics" role="tab" aria-selected="true" id="tabbtn-basics">1 · หลักการสกัดกาแฟ</button>
       <button class="tab-btn" data-tab="lab" role="tab" aria-selected="false" id="tabbtn-lab">2 · Pour-Over Lab</button>
@@ -1718,7 +1720,6 @@
   </div>
   <footer class="site-foot">
     <h2>ที่มาและข้อจำกัด</h2>
-    <p class="site-author"><strong>จัดทำโดย</strong> ศูนย์วิจัยพัฒนากาแฟคุณภาพ (Coffee Quality Research Center) มหาวิทยาลัยแม่ฟ้าหลวง</p>
     <p>เนื้อหานี้จัดทำเพื่อการเรียนรู้หลักการสกัดกาแฟด้วยการดริป ตัวเลขและแบบจำลองในหน้า Lab ถูกทำให้เรียบง่ายเพื่อดูทิศทางของผล ไม่ใช่ค่าวัดจริงและไม่ควรใช้ทำนายการชงจริง ผลลัพธ์จริงขึ้นกับเมล็ด เครื่องบด น้ำ อุปกรณ์ และเทคนิคของแต่ละคน</p>
     <p><strong>แหล่งอ้างอิงหลัก:</strong> งานทบทวนวรรณกรรมการสกัดกาแฟของ Córdoba และคณะ (2020) · Jonathan Gagné, <em>The Physics of Filter Coffee</em> (2021) · Brewing Control Chart และค่าแนะนำของ Specialty Coffee Association (SCA) · <em>Espresso Extraction: Measurement and Mastery</em> (ค่าคุณภาพน้ำ) · สูตรที่ผู้ชงแชมเปียนและผู้ผลิตเผยแพร่สาธารณะ (ระบุแหล่งในแต่ละสูตรในหน้าสูตรระดับโลก)</p>
     <p>ชื่อบุคคล องค์กร และยี่ห้อที่กล่าวถึงเป็นกรรมสิทธิ์ของเจ้าของนั้น ๆ เว็บนี้ไม่ได้มีส่วนเกี่ยวข้องหรือได้รับการรับรองจากบุคคล องค์กร และยี่ห้อที่กล่าวถึงในเนื้อหา</p>
