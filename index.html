@@ -325,6 +325,31 @@
   .quiz-score{ display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-top: 4px; font-size: 15px; font-weight: 700; }
   .lede-quote{ margin: 14px 0 0; padding: 4px 0 4px 16px; border-left: 3px solid var(--caramel); font-size: 17px; line-height: 1.7; color: var(--ink); max-width: 62ch; }
   .lede-credit{ margin: 10px 0 0 19px; font-size: 13px; color: var(--ink-dim); }
+  .hero{ display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .hero-text{ flex: 1 1 auto; min-width: 0; }
+  .hero-art{ flex: 0 0 220px; }
+  .hero-art svg{ width: 100%; height: auto; display: block; }
+  @media (max-width: 640px){
+    .hero{ flex-direction: column-reverse; align-items: stretch; gap: 6px; }
+    .hero-art{ flex: 0 0 auto; width: 140px; align-self: flex-end; margin-bottom: 0; }
+  }
+  .hero-art .stream{ stroke-dasharray: 6 5; animation: pour 1.2s linear infinite; }
+  .hero-art .drop{ animation: drip 1.6s ease-in infinite; opacity: 0; }
+  .hero-art .d2{ animation-delay: .8s; }
+  .hero-art .steam path{ animation: steam 3s ease-in-out infinite; }
+  .hero-art .steam path + path{ animation-delay: 1.5s; }
+  @keyframes pour{ to{ stroke-dashoffset: -22; } }
+  @keyframes drip{ 0%{ transform: translateY(0); opacity: 0; } 15%{ opacity: 1; } 100%{ transform: translateY(20px); opacity: 0; } }
+  @keyframes steam{ 0%,100%{ transform: translateY(0); opacity: .2; } 50%{ transform: translateY(-4px); opacity: .7; } }
+  @media (prefers-reduced-motion: reduce){ .hero-art .stream, .hero-art .drop, .hero-art .steam path{ animation: none; } .hero-art .drop{ opacity: 1; } }
+  .term-name{ display: flex; align-items: center; gap: 8px; }
+  .term-ico{ width: 22px; height: 22px; flex: 0 0 auto; color: var(--caramel); }
+  .flavor-head{ display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .flavor-head h3{ margin-bottom: 0 !important; }
+  .flavor-cup{ width: 40px; height: 40px; flex: 0 0 auto; }
+  .ex-meter{ position: relative; height: 6px; border-radius: 999px; margin: 0 0 12px; background: linear-gradient(to right, var(--sage), var(--gold), var(--rust)); opacity: .9; }
+  .ex-meter span{ position: absolute; top: 50%; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--paper); border: 3px solid var(--coffee-strong); }
+  .proc-ico{ width: 56px; height: 46px; display: block; margin-bottom: 8px; }
   .site-foot{ margin-top: 40px; padding-top: 18px; border-top: 2px solid var(--line); font-size: 14px; line-height: 1.7; color: var(--ink-dim); max-width: 72ch; }
   .site-foot h2{ font-size: 15.5px; margin: 0 0 6px; color: var(--ink); }
   .site-foot p{ margin: 0 0 8px; }
@@ -910,10 +935,40 @@
 
 <div class="wrap">
   <header class="top">
-    <p class="eyebrow">Coffee Extraction 101 · Pour-Over Lab</p>
-    <h1>ห้องเรียนการสกัดกาแฟ</h1>
-    <blockquote class="lede lede-quote">ความสนุกของการชงกาแฟคือ ‘เมล็ดเดียวกัน ชงแต่ละรอบก็ไม่เหมือนกัน’ แต่ความท้าทายที่แท้จริงคือ เราจะเข้าใจตัวแปรอย่างไร ให้สามารถทำซ้ำรสชาติที่ดีที่สุดแก้วนั้นได้อีกครั้ง</blockquote>
-    <p class="lede-credit">จัดทำโดย ศูนย์วิจัยพัฒนากาแฟคุณภาพ (Coffee Quality Research Center) มหาวิทยาลัยแม่ฟ้าหลวง</p>
+    <div class="hero">
+      <div class="hero-text">
+      <p class="eyebrow">Coffee Extraction 101 · Pour-Over Lab</p>
+      <h1>ห้องเรียนการสกัดกาแฟ</h1>
+      <blockquote class="lede lede-quote">ความสนุกของการชงกาแฟคือ ‘เมล็ดเดียวกัน ชงแต่ละรอบก็ไม่เหมือนกัน’ แต่ความท้าทายที่แท้จริงคือ เราจะเข้าใจตัวแปรอย่างไร ให้สามารถทำซ้ำรสชาติที่ดีที่สุดแก้วนั้นได้อีกครั้ง</blockquote>
+      <p class="lede-credit">จัดทำโดย ศูนย์วิจัยพัฒนากาแฟคุณภาพ (Coffee Quality Research Center) มหาวิทยาลัยแม่ฟ้าหลวง</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 220 200" role="presentation">
+        <circle cx="112" cy="112" r="86" fill="var(--paper-2)"/>
+        <g class="steam" fill="none" stroke="var(--ink-dim)" stroke-width="2" stroke-linecap="round" opacity=".45">
+          <path d="M36 18 q-5 -6 0 -12"/><path d="M48 16 q-5 -6 0 -12"/>
+        </g>
+        <path d="M18 40 q0 -14 14 -14 h36 q14 0 14 14 v28 q0 8 -8 8 h-48 q-8 0 -8 -8 z" fill="var(--paper)" stroke="var(--coffee)" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M30 26 q20 -12 40 0" fill="none" stroke="var(--coffee)" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="50" cy="18" r="3" fill="var(--coffee)"/>
+        <path d="M18 34 q-12 4 -10 22 q2 10 10 10" fill="none" stroke="var(--coffee)" stroke-width="4" stroke-linecap="round"/>
+        <path d="M82 62 q14 2 18 -14 q4 -14 16 -12 l8 5" fill="none" stroke="var(--coffee)" stroke-width="5" stroke-linecap="round"/>
+        <path class="stream" d="M124 42 q4 22 -14 54" fill="none" stroke="var(--caramel)" stroke-width="3" stroke-linecap="round"/>
+        <rect x="58" y="88" width="104" height="7" rx="3.5" fill="var(--coffee)"/>
+        <path d="M64 95 h92 l-30 37 h-32 z" fill="var(--paper)" stroke="var(--coffee)" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M73 101 h74 l-7 9 h-60 z" fill="var(--caramel)" opacity=".75"/>
+        <g stroke="var(--line)" stroke-width="1.5"><path d="M88 112 l6 16"/><path d="M110 112 v16"/><path d="M132 112 l-6 16"/></g>
+        <circle class="drop d1" cx="110" cy="138" r="2.6" fill="var(--coffee)"/>
+        <circle class="drop d2" cx="110" cy="138" r="2.6" fill="var(--coffee)"/>
+        <path d="M74 134 h72 l-4 48 q-2 10 -12 10 h-40 q-10 0 -12 -10 z" fill="var(--paper)" stroke="var(--coffee)" stroke-width="3" stroke-linejoin="round" opacity=".95"/>
+        <path d="M77.5 160 h65 l-2 21 q-1.5 7 -9 7 h-43 q-7.5 0 -9 -7 z" fill="var(--coffee)" opacity=".85"/>
+        <path d="M146 144 q12 2 10 16 q-2 10 -12 10" fill="none" stroke="var(--coffee)" stroke-width="3" stroke-linecap="round"/>
+        <g transform="translate(178 176) rotate(-25)"><ellipse rx="9" ry="6" fill="var(--coffee-strong)"/><path d="M-7 0 q7 -3 14 0" stroke="var(--paper)" stroke-width="1.5" fill="none"/></g>
+        <g transform="translate(196 160) rotate(20)"><ellipse rx="7.5" ry="5" fill="var(--coffee)"/><path d="M-6 0 q6 -2.5 12 0" stroke="var(--paper)" stroke-width="1.3" fill="none"/></g>
+        <g transform="translate(36 178) rotate(10)"><ellipse rx="8" ry="5.5" fill="var(--coffee)"/><path d="M-6 0 q6 -2.5 12 0" stroke="var(--paper)" stroke-width="1.3" fill="none"/></g>
+      </svg>
+    </div>
+    </div>
     <div class="tabs" role="tablist">
       <button class="tab-btn" data-tab="basics" role="tab" aria-selected="true" id="tabbtn-basics">1 · หลักการสกัดกาแฟ</button>
       <button class="tab-btn" data-tab="lab" role="tab" aria-selected="false" id="tabbtn-lab">2 · Pour-Over Lab</button>
@@ -958,15 +1013,15 @@
       <h2>ศัพท์กาแฟที่ควรรู้ก่อนเริ่ม</h2>
       <p class="sub">คำเหล่านี้จะโผล่ซ้ำๆ ในห้องแล็บ</p>
       <div class="term-list">
-        <div class="term-row"><span class="term-name">Dose</span><span class="term-def">น้ำหนักผงกาแฟที่ใช้ชงหนึ่งครั้ง มักวัดเป็นกรัม</span></div>
-        <div class="term-row"><span class="term-name">Ratio</span><span class="term-def">สัดส่วนกาแฟต่อน้ำ เช่น 1:16 คือกาแฟ 1 กรัมต่อน้ำ 16 กรัม</span></div>
-        <div class="term-row"><span class="term-name">Extraction Yield (EY)</span><span class="term-def">สัดส่วนของสารที่ละลายออกจากผงกาแฟ เทียบกับน้ำหนักกาแฟทั้งหมด (%)</span></div>
-        <div class="term-row"><span class="term-name">TDS</span><span class="term-def">Total Dissolved Solids ความเข้มข้นของสารละลายในน้ำกาแฟที่ชงเสร็จ (%) บอกว่าแก้วนั้นเข้มแค่ไหน</span></div>
-        <div class="term-row"><span class="term-name">Bloom</span><span class="term-def">การรินน้ำร้อนปริมาณน้อยราดผงกาแฟก่อน เพื่อไล่แก๊สคาร์บอนไดออกไซด์ และทำให้ผงกาแฟเปียกทั่วถึง (saturated) ก่อนเทหลัก ป้องกันน้ำไหลลัดเป็นทาง (channeling) ที่ทำให้สกัดไม่สม่ำเสมอ ปริมาณที่ใช้มีตั้งแต่ 2 เท่า (สูตรพื้นฐาน) ถึง 3–4 เท่าของน้ำหนักกาแฟ (สูตรที่เน้นให้ผงอิ่มน้ำเต็มที่)</span></div>
-        <div class="term-row"><span class="term-name">Agitation</span><span class="term-def">การเคลื่อนไหวของน้ำและผงกาแฟระหว่างชง ยิ่งแรงยิ่งเร่งการสกัด</span></div>
-        <div class="term-row"><span class="term-name">Sweet Spot</span><span class="term-def">ช่วงค่า Extraction Yield และ TDS ที่ SCA แนะนำ ให้รสชาติสมดุลที่สุด</span></div>
-        <div class="term-row"><span class="term-name">Body</span><span class="term-def">ความรู้สึกหนักเบาหรือความหนืดของกาแฟในปาก มาจากน้ำมันและใยอาหารที่ละลายออกมา</span></div>
-        <div class="term-row"><span class="term-name">Under / Over-extraction</span><span class="term-def">สกัดน้อยไป = หยุดก่อนน้ำตาลจะสมดุลกับกรด (เปรี้ยว จืด) · สกัดมากไป = ดึงเส้นใย/แทนนินออกมา (ขม ฝาด)</span></div>
+        <div class="term-row"><span class="term-name"><svg class="term-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="15" width="18" height="5" rx="1.5"/><path d="M7 15 q5 -9 10 0"/><path d="M10 11.5 q2 -1 4 0"/></svg><span>Dose</span></span><span class="term-def">น้ำหนักผงกาแฟที่ใช้ชงหนึ่งครั้ง มักวัดเป็นกรัม</span></div>
+        <div class="term-row"><span class="term-name"><svg class="term-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="13" r="2.5"/><circle cx="16.5" cy="12" r="5"/><path d="M10.6 10.5v.01M10.6 14.5v.01"/></svg><span>Ratio</span></span><span class="term-def">สัดส่วนกาแฟต่อน้ำ เช่น 1:16 คือกาแฟ 1 กรัมต่อน้ำ 16 กรัม</span></div>
+        <div class="term-row"><span class="term-name"><svg class="term-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 12V4a8 8 0 0 1 7.5 10.5z" fill="currentColor"/></svg><span>Extraction Yield (EY)</span></span><span class="term-def">สัดส่วนของสารที่ละลายออกจากผงกาแฟ เทียบกับน้ำหนักกาแฟทั้งหมด (%)</span></div>
+        <div class="term-row"><span class="term-name"><svg class="term-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-4 6-6 9-6 12a6 6 0 0 0 12 0c0-3-2-6-6-12z"/><circle cx="10" cy="15" r=".9" fill="currentColor"/><circle cx="13.5" cy="13" r=".9" fill="currentColor"/><circle cx="13" cy="17" r=".9" fill="currentColor"/></svg><span>TDS</span></span><span class="term-def">Total Dissolved Solids ความเข้มข้นของสารละลายในน้ำกาแฟที่ชงเสร็จ (%) บอกว่าแก้วนั้นเข้มแค่ไหน</span></div>
+        <div class="term-row"><span class="term-name"><svg class="term-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19q9-8 18 0z"/><circle cx="9" cy="9" r="2"/><circle cx="14.5" cy="6" r="1.5"/><circle cx="15" cy="11" r="1.2"/></svg><span>Bloom</span></span><span class="term-def">การรินน้ำร้อนปริมาณน้อยราดผงกาแฟก่อน เพื่อไล่แก๊สคาร์บอนไดออกไซด์ และทำให้ผงกาแฟเปียกทั่วถึง (saturated) ก่อนเทหลัก ป้องกันน้ำไหลลัดเป็นทาง (channeling) ที่ทำให้สกัดไม่สม่ำเสมอ ปริมาณที่ใช้มีตั้งแต่ 2 เท่า (สูตรพื้นฐาน) ถึง 3–4 เท่าของน้ำหนักกาแฟ (สูตรที่เน้นให้ผงอิ่มน้ำเต็มที่)</span></div>
+        <div class="term-row"><span class="term-name"><svg class="term-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a1.5 1.5 0 1 1 1.5-1.5 4 4 0 1 1-5.5-2 6.5 6.5 0 1 1-2 9"/></svg><span>Agitation</span></span><span class="term-def">การเคลื่อนไหวของน้ำและผงกาแฟระหว่างชง ยิ่งแรงยิ่งเร่งการสกัด</span></div>
+        <div class="term-row"><span class="term-name"><svg class="term-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></svg><span>Sweet Spot</span></span><span class="term-def">ช่วงค่า Extraction Yield และ TDS ที่ SCA แนะนำ ให้รสชาติสมดุลที่สุด</span></div>
+        <div class="term-row"><span class="term-name"><svg class="term-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.5 9.5a3 3 0 0 1-3 2.5h-5a3 3 0 0 1-3-2.5z"/><path d="M6 13q3-2 6 0t6 0"/></svg><span>Body</span></span><span class="term-def">ความรู้สึกหนักเบาหรือความหนืดของกาแฟในปาก มาจากน้ำมันและใยอาหารที่ละลายออกมา</span></div>
+        <div class="term-row"><span class="term-name"><svg class="term-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15.5 21 9"/><path d="M12 12.5l-3.5 7h7z"/><circle cx="5" cy="12" r="1.6"/></svg><span>Under / Over-extraction</span></span><span class="term-def">สกัดน้อยไป = หยุดก่อนน้ำตาลจะสมดุลกับกรด (เปรี้ยว จืด) · สกัดมากไป = ดึงเส้นใย/แทนนินออกมา (ขม ฝาด)</span></div>
       </div>
     </section>
 
@@ -975,7 +1030,8 @@
       <p class="sub">ภาพรวมความสัมพันธ์ระหว่างระดับการสกัดกับรสชาติ</p>
       <div class="flavor-table">
         <div class="flavor-col under">
-          <h3>สกัดน้อยไป (Under)</h3>
+          <div class="flavor-head"><svg class="flavor-cup" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 10h22l-2.5 20a4 4 0 0 1-4 3.5h-9a4 4 0 0 1-4-3.5z" fill="var(--paper)" stroke="var(--coffee)" stroke-width="2.2" stroke-linejoin="round"/><path d="M9.5 23.2h19.1l-1.2 9.6a3.3 3.3 0 0 1-3.3 2.8h-8.6a3.3 3.3 0 0 1-3.3-2.8z" fill="var(--sage)"/><path d="M30 14q6 0 5.5 5.5T29 24" fill="none" stroke="var(--coffee)" stroke-width="2.2" stroke-linecap="round"/></svg><h3>สกัดน้อยไป (Under)</h3></div>
+          <div class="ex-meter" aria-hidden="true"><span style="left:15%"></span></div>
           <ul>
             <li>เปรี้ยว (Sour)</li>
             <li>ขาดความหวาน</li>
@@ -984,7 +1040,8 @@
           </ul>
         </div>
         <div class="flavor-col ideal">
-          <h3>สกัดพอดี (Ideal)</h3>
+          <div class="flavor-head"><svg class="flavor-cup" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 10h22l-2.5 20a4 4 0 0 1-4 3.5h-9a4 4 0 0 1-4-3.5z" fill="var(--paper)" stroke="var(--coffee)" stroke-width="2.2" stroke-linejoin="round"/><path d="M8.9 18.4h20.2l-1.8 14.4a3.3 3.3 0 0 1-3.3 2.8h-8.6a3.3 3.3 0 0 1-3.3-2.8z" fill="var(--gold)"/><path d="M30 14q6 0 5.5 5.5T29 24" fill="none" stroke="var(--coffee)" stroke-width="2.2" stroke-linecap="round"/></svg><h3>สกัดพอดี (Ideal)</h3></div>
+          <div class="ex-meter" aria-hidden="true"><span style="left:50%"></span></div>
           <ul>
             <li>สดชื่น (Fresh)</li>
             <li>รสชัดเจน (Clarity)</li>
@@ -993,7 +1050,8 @@
           </ul>
         </div>
         <div class="flavor-col over">
-          <h3>สกัดมากไป (Over)</h3>
+          <div class="flavor-head"><svg class="flavor-cup" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 10h22l-2.5 20a4 4 0 0 1-4 3.5h-9a4 4 0 0 1-4-3.5z" fill="var(--paper)" stroke="var(--coffee)" stroke-width="2.2" stroke-linejoin="round"/><path d="M8.4 13.6h21.2l-2.3 19.2a3.3 3.3 0 0 1-3.3 2.8h-8.6a3.3 3.3 0 0 1-3.3-2.8z" fill="var(--rust)"/><path d="M30 14q6 0 5.5 5.5T29 24" fill="none" stroke="var(--coffee)" stroke-width="2.2" stroke-linecap="round"/></svg><h3>สกัดมากไป (Over)</h3></div>
+          <div class="ex-meter" aria-hidden="true"><span style="left:85%"></span></div>
           <ul>
             <li>ขม (Bitter)</li>
             <li>แห้งคอ (Dry)</li>
@@ -1065,15 +1123,15 @@
       <p class="sub">ก่อนจะถึงมือคุณ เมล็ดกาแฟผ่านการแปรรูปหลังเก็บเกี่ยวแบบใดแบบหนึ่ง ซึ่งกำหนดทิศทางรสชาติตั้งแต่ก่อนคั่ว</p>
       <div class="process-grid">
         <div class="process-card">
-          <h3>Natural (Dry) Method</h3>
+          <svg class="proc-ico" viewBox="0 0 48 40" aria-hidden="true"><circle cx="12" cy="11" r="5" fill="var(--gold)"/><g stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M12 1v2.5M12 18.5V21M2 11h2.5M19.5 11H22M5 4l1.8 1.8M17.2 16.2 19 18M5 18l1.8-1.8M17.2 5.8 19 4"/></g><path d="M30 10q2 6 6 9" fill="none" stroke="var(--sage)" stroke-width="2" stroke-linecap="round"/><circle cx="32" cy="27" r="8" fill="var(--rust)"/><circle cx="40" cy="25" r="6" fill="var(--rust)" opacity=".8"/><circle cx="29.5" cy="24.5" r="2" fill="var(--paper)" opacity=".5"/></svg><h3>Natural (Dry) Method</h3>
           <p>ตากผลกาแฟทั้งลูกให้แห้งก่อน แล้วค่อยสีเอาเปลือกและเนื้อออก ให้รสหวานจัด ผลไม้เด่น บอดี้หนา</p>
         </div>
         <div class="process-card">
-          <h3>Honey Method</h3>
+          <svg class="proc-ico" viewBox="0 0 48 40" aria-hidden="true"><path d="M20 3c-6 9-9 14-9 19a9 9 0 0 0 18 0c0-5-3-10-9-19z" fill="var(--gold)" opacity=".85"/><ellipse cx="20" cy="23" rx="5" ry="6.5" fill="var(--coffee)"/><path d="M20 17.5q-2 5.5 0 11" stroke="var(--paper)" stroke-width="1.4" fill="none"/><path d="M34 12v18M30 16h8M30 22h8" stroke="var(--caramel)" stroke-width="2" stroke-linecap="round" opacity=".7"/></svg><h3>Honey Method</h3>
           <p>สีเปลือกออกแต่เก็บเมือก (mucilage) ไว้ตอนตาก ให้ความหวานปานกลางถึงสูง กรดนุ่มนวลกว่า Washed</p>
         </div>
         <div class="process-card">
-          <h3>Washed Method</h3>
+          <svg class="proc-ico" viewBox="0 0 48 40" aria-hidden="true"><ellipse cx="24" cy="13" rx="8.5" ry="6.5" fill="var(--coffee)"/><path d="M17 13q7-3 14 0" stroke="var(--paper)" stroke-width="1.5" fill="none"/><g fill="none" stroke="var(--sage)" stroke-width="2.2" stroke-linecap="round"><path d="M6 26q4-4 8 0t8 0 8 0 8 0 8 0"/><path d="M6 33q4-4 8 0t8 0 8 0 8 0 8 0" opacity=".6"/></g></svg><h3>Washed Method</h3>
           <p>หมักในน้ำเพื่อล้างเมือกออกก่อนตาก ให้รสสะอาด ใส กรดเด่นชัด เผยเอกลักษณ์ถิ่นปลูกได้ดีที่สุด</p>
         </div>
       </div>
